@@ -45,6 +45,14 @@ To ensure consistency and leverage the chosen stack effectively, please follow t
 
 6.  **Routing**:
     *   Utilize the Next.js App Router (file-system based routing in the `src/app/` directory) **in client components only**.
+    *   **STRICT ROUTING POLICY**:  
+        🚫 **Absolutely forbid** the use of dynamic route segments like `/details/[id]`.  
+        ❌ No exceptions — `/details/[id]` and similar patterns are banned.  
+        ✅ Instead, always pass identifiers via query parameters:  
+        ```
+        /details?id=123
+        ```
+        This ensures URL structure consistency, avoids server-driven routing, and keeps the application purely client-side.
 
 7.  **API Calls & Data Fetching**:
     *   **Client-Side Only**: All data fetching must be done **exclusively in client components** using external APIs. No server components, server routes, or server logic are allowed.

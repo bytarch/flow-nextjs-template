@@ -6,7 +6,7 @@ This document outlines the technology stack and specific library usage guideline
 
 The application is built using the following core technologies:
 
-*   **Framework**: Next.js (App Router)
+*   **Framework**: Next.js (App Router) — **Client-Side Only**
 *   **Language**: TypeScript
 *   **UI Components**: Shadcn/UI - A collection of re-usable UI components built with Radix UI and Tailwind CSS.
 *   **Styling**: Tailwind CSS - A utility-first CSS framework for rapid UI development.
@@ -44,12 +44,13 @@ To ensure consistency and leverage the chosen stack effectively, please follow t
     *   **Complex Global State**: If application state becomes significantly complex, discuss the potential introduction of a dedicated state management library (e.g., Zustand, Jotai) before implementing.
 
 6.  **Routing**:
-    *   Utilize the Next.js App Router (file-system based routing in the `src/app/` directory).
+    *   Utilize the Next.js App Router (file-system based routing in the `src/app/` directory) **in client components only**.
 
 7.  **API Calls & Data Fetching**:
-    *   **External-Only**: All data fetching must be from **external APIs**. The application must **not** create or depend on any server-side components, API routes, or internal server logic within the Next.js app.
-    *   **Client-Side Fetching**: Use the native `fetch` API or a simple wrapper to call external endpoints directly from the browser.
-    *   **No Server-Side Rendering (SSR)**: Do not use `getServerSideProps`, `getStaticProps`, or any Next.js server functions for data fetching. All pages must be static or client-rendered.
+    *   **Client-Side Only**: All data fetching must be done **exclusively in client components** using external APIs. No server components, server routes, or server logic are allowed.
+    *   **External-Only APIs**: The application must **not** create or depend on any internal API routes or server-side handlers.
+    *   **Fetch Method**: Use the native `fetch` API or a simple wrapper to call external endpoints directly from the browser.
+    *   **No Server-Side Rendering (SSR) or Static Props**: Do not use `getServerSideProps`, `getStaticProps`, or any Next.js server functions for data fetching. All pages must be static or client-rendered.
     *   **User API Requirement**: If the user does not have an API, inform them they must create one for the application to function.
     *   **Neon Hosting Note**: If hosting on Neon's platform, backend APIs must be implemented in PHP, as this is the supported backend language on their hosting panel.
 

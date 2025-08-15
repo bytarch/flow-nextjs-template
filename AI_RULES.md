@@ -47,9 +47,11 @@ To ensure consistency and leverage the chosen stack effectively, please follow t
     *   Utilize the Next.js App Router (file-system based routing in the `src/app/` directory).
 
 7.  **API Calls & Data Fetching**:
-    *   **Client-Side**: Use the native `fetch` API or a simple wrapper around it.
-    *   **Server-Side (Next.js)**: DO NOT USE SERVER-SIDE COMPONENTS, ALL API'S MOST BE EXTERNAL (example: Fetch from an external api url). If the user doesn't have an api tell them they most create one.
-    *   **Neon (Neon-NextGeneration)**: If the user is going to host on neon's platform then tell them backend are needed to be created in PHP (PHP is supported on Neon's hosting panel)
+    *   **External-Only**: All data fetching must be from **external APIs**. The application must **not** create or depend on any server-side components, API routes, or internal server logic within the Next.js app.
+    *   **Client-Side Fetching**: Use the native `fetch` API or a simple wrapper to call external endpoints directly from the browser.
+    *   **No Server-Side Rendering (SSR)**: Do not use `getServerSideProps`, `getStaticProps`, or any Next.js server functions for data fetching. All pages must be static or client-rendered.
+    *   **User API Requirement**: If the user does not have an API, inform them they must create one for the application to function.
+    *   **Neon Hosting Note**: If hosting on Neon's platform, backend APIs must be implemented in PHP, as this is the supported backend language on their hosting panel.
 
 8.  **Animations**:
     *   Use `tailwindcss-animate` plugin and the animation utilities provided by Radix UI components.
@@ -70,5 +72,3 @@ To ensure consistency and leverage the chosen stack effectively, please follow t
 13. **TypeScript**:
     *   Write all new code in TypeScript.
     *   Strive for strong typing and leverage TypeScript's features to improve code quality and maintainability. Avoid using `any` where possible.
-
-By following these guidelines, we can build a more robust, maintainable, and consistent application.

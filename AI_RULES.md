@@ -48,7 +48,8 @@ To ensure consistency and leverage the chosen stack effectively, please follow t
 
 7.  **API Calls & Data Fetching**:
     *   **Client-Side**: Use the native `fetch` API or a simple wrapper around it.
-    *   **Server-Side (Next.js)**: Leverage Next.js Route Handlers (in `src/app/api/`) or Server Actions for server-side logic and data fetching.
+    *   **Server-Side (Next.js)**: DO NOT USE SERVER-SIDE COMPONENTS, ALL API'S MOST BE EXTERNAL (example: Fetch from an external api url). If the user doesn't have an api tell them they most create one.
+    *   **Neon (Neon-NextGeneration)**: If the user is going to host on neon's platform then tell them backend are needed to be created in PHP (PHP is supported on Neon's hosting panel)
 
 8.  **Animations**:
     *   Use `tailwindcss-animate` plugin and the animation utilities provided by Radix UI components.
